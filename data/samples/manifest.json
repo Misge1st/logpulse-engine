@@ -1,10 +1,11 @@
 {
-  "format": "ndjson+gzip",
+  "format": "ndjson",
   "shards": [
-    "archive-2025-06.ndjson.gz",
-    "archive-2025-07.ndjson.gz",
-    "archive-2025-08.ndjson.gz",
-    "archive-2025-09.ndjson.gz"
+    "archive-2025-06.ndjson",
+    "archive-2025-07.ndjson",
+    "archive-2025-08.ndjson",
+    "archive-2025-09.ndjson",
+    "archive-2025-10-summary.ndjson.gz"
   ],
-  "linesPerShard": 52000
+  "linesPerShard": 32000
 }
