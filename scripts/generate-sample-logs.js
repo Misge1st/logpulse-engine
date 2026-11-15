@@ -23,7 +23,7 @@ function line(i, month) {
   });
 }
 
-const SHARD_LINES = 32000;
+const SHARD_LINES = 11800;
 const SHARDS = [
   { name: 'archive-2025-06.ndjson', month: 6 },
   { name: 'archive-2025-07.ndjson', month: 7 },

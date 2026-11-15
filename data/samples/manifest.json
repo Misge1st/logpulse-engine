@@ -7,5 +7,5 @@
     "archive-2025-09.ndjson",
     "archive-2025-10-summary.ndjson.gz"
   ],
-  "linesPerShard": 32000
+  "linesPerShard": 11800
 }
