@@ -1,0 +1,13 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "LogPulseEvent",
+  "type": "object",
+  "required": ["service", "level", "message"],
+  "properties": {
+    "sequence_id": { "type": ["integer", "null"] },
+    "service": { "type": "string", "minLength": 1 },
+    "level": { "enum": ["DEBUG", "INFO", "WARN", "ERROR"] },
+    "message": { "type": "string", "minLength": 1 },
+    "timestamp": { "type": "string", "format": "date-time" }
+  }
+}

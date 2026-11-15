@@ -1,0 +1,10 @@
+{
+  "format": "ndjson+gzip",
+  "shards": [
+    "archive-2025-06.ndjson.gz",
+    "archive-2025-07.ndjson.gz",
+    "archive-2025-08.ndjson.gz",
+    "archive-2025-09.ndjson.gz"
+  ],
+  "linesPerShard": 52000
+}

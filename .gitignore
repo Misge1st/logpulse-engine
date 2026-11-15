@@ -1,0 +1,9 @@
+node_modules/
+logs.db
+logs.db-shm
+logs.db-wal
+.env
+.DS_Store
+coverage/
+dist/
+*.log

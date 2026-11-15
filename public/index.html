@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>LogPulse Dashboard</title>
+  <link rel="stylesheet" href="/styles.css" />
+</head>
+<body>
+  <header class="top">
+    <div>
+      <h1>LogPulse</h1>
+      <p>Live ingest queue &amp; error stream</p>
+    </div>
+    <div class="pill" id="health">Checking…</div>
+  </header>
+  <section class="stats" id="stats"></section>
+  <section class="panel">
+    <div class="toolbar">
+      <input id="filter-q" type="search" placeholder="Search message…" />
+      <select id="filter-level">
+        <option value="">All levels</option>
+        <option value="ERROR">ERROR</option>
+        <option value="WARN">WARN</option>
+        <option value="INFO">INFO</option>
+      </select>
+      <button id="refresh">Refresh</button>
+    </div>
+    <table>
+      <thead><tr><th>Time</th><th>Service</th><th>Level</th><th>Message</th></tr></thead>
+      <tbody id="log-rows"></tbody>
+    </table>
+  </section>
+  <script src="/app.js"></script>
+</body>
+</html>
