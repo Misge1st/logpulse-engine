@@ -1,0 +1,26 @@
+openapi: 3.0.3
+info:
+  title: LogPulse Engine API
+  version: 2.1.0
+paths:
+  /health:
+    get:
+      summary: Health and queue stats
+  /api/logs:
+    post:
+      summary: Enqueue a single log event
+      security: [{ ApiKeyAuth: [] }]
+  /api/logs/batch:
+    post:
+      summary: Enqueue up to 500 events
+      security: [{ ApiKeyAuth: [] }]
+  /api/logs/syslog:
+    post:
+      summary: Parse a syslog line and enqueue
+      security: [{ ApiKeyAuth: [] }]
+components:
+  securitySchemes:
+    ApiKeyAuth:
+      type: apiKey
+      in: header
+      name: X-API-Key

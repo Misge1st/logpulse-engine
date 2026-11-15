@@ -8,6 +8,8 @@ const { searchLogs, countByLevel } = require('./search');
 const alerts = require('./alerts');
 const { startRetentionJob } = require('./retention');
 const metrics = require('./metrics');
+const { normalizeBatch } = require('./batchIngest');
+const { parseSyslogLine } = require('./syslogParser');
 
 const app = express();
 app.use(express.json({ limit: '2mb' }));
@@ -15,7 +17,7 @@ app.use(express.static(path.join(__dirname, '../public')));
 app.use(rateLimiter(100, 60));
 
 app.get('/health', (_req, res) => {
-  res.json({ status: 'ok', version: '2.0.0', queue: logQueue.getStats() });
+  res.json({ status: 'ok', version: '2.1.0', queue: logQueue.getStats() });
 });
 
 app.get('/metrics', (_req, res) => {
@@ -28,6 +30,20 @@ app.post('/api/logs', requireApiKey, (req, res) => {
   if (!message) return res.status(400).json({ error: 'Log message is required' });
   logQueue.enqueue({ sequence_id, service, level, message });
   res.status(202).json({ status: 'queued', queueStats: logQueue.getStats() });
+});
+
+app.post('/api/logs/batch', requireApiKey, (req, res) => {
+  const batch = normalizeBatch(req.body);
+  if (!batch.ok) return res.status(400).json({ error: batch.error });
+  for (const entry of batch.logs) logQueue.enqueue(entry);
+  res.status(202).json({ status: 'queued', accepted: batch.logs.length, queueStats: logQueue.getStats() });
+});
+
+app.post('/api/logs/syslog', requireApiKey, express.text({ type: '*/*', limit: '64kb' }), (req, res) => {
+  const parsed = parseSyslogLine(req.body);
+  if (!parsed) return res.status(400).json({ error: 'Invalid syslog line' });
+  logQueue.enqueue(parsed);
+  res.status(202).json({ status: 'queued', normalized: parsed, queueStats: logQueue.getStats() });
 });
 
 app.get('/api/logs', (req, res) => {

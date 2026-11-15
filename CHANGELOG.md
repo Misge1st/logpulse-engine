@@ -1,5 +1,10 @@
 # Changelog
 
+## 2.1.0 — 2026-11-16
+
+- Batch and syslog ingest endpoints, sample replay CLI, CI workflow.
+- Doubled compressed replay corpora for load-testing.
+
 ## 2.0.0 — 2026-11-12
 
 - Added alert rules, webhook fan-out, and retention sweeper.

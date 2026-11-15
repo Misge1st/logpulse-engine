@@ -1,6 +1,6 @@
 {
   "name": "logpulse-engine",
-  "version": "2.0.0",
+  "version": "2.1.0",
   "description": "High-throughput log ingestion engine with batched queue processing, Redis TTL rate-limiting, alerting, and observability.",
   "main": "src/server.js",
   "bin": {
@@ -12,7 +12,8 @@
     "test:queue": "node tests/validateQueue.js",
     "test:unit": "node tests/search.test.js && node tests/alerts.test.js",
     "cli": "node cli/index.js",
-    "generate:samples": "node scripts/generate-sample-logs.js"
+    "generate:samples": "node scripts/generate-sample-logs.js",
+    "replay:samples": "node scripts/replay-samples.js"
   },
   "dependencies": {
     "better-sqlite3": "^11.0.0",

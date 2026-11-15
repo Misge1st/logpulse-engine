@@ -23,7 +23,7 @@ function line(i, month) {
   });
 }
 
-const SHARD_LINES = 11800;
+const SHARD_LINES = 23600;
 const SHARDS = [
   { name: 'archive-2025-06.ndjson', month: 6 },
   { name: 'archive-2025-07.ndjson', month: 7 },
@@ -39,12 +39,12 @@ for (const shard of SHARDS) {
   console.log('Wrote', target);
 }
 
-const gzName = 'archive-2025-10-summary.ndjson.gz';
+const gzName = 'archive-2025-12-summary.ndjson.gz';
 const summaryTarget = path.join(outDir, gzName);
 const gz = zlib.createGzip({ level: 6 });
 const summaryStream = fs.createWriteStream(summaryTarget);
 gz.pipe(summaryStream);
-for (let i = 1; i <= 8000; i++) gz.write(line(i, 10) + '\n');
+for (let i = 1; i <= 12000; i++) gz.write(line(i, 12) + '\n');
 gz.end();
 console.log('Wrote', summaryTarget);
 

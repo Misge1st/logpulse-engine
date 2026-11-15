@@ -7,7 +7,9 @@ Real-time log ingestion with **batched SQLite commits**, **Redis rate limiting**
 - 2-second / 250-event transactional queue (`src/logQueue.js`) with FIFO guarantees (see `npm run test:queue`).
 - Prometheus metrics at `/metrics` and live dashboard at `/`.
 - Read-through Redis cache for demo product queries.
-- NDJSON export + compressed sample corpora under `data/samples/` for replay testing.
+- NDJSON export + large replay corpora under `data/samples/` (see `npm run replay:samples`).
+- Batch ingest (`POST /api/logs/batch`) and syslog adapter (`POST /api/logs/syslog`).
+- OpenAPI spec (`docs/openapi.yaml`) and Grafana starter dashboard (`grafana/`).
 
 ## Quick start
 

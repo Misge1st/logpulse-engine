@@ -1,0 +1,24 @@
+{
+  "title": "LogPulse Overview",
+  "uid": "logpulse-main",
+  "timezone": "browser",
+  "panels": [
+    {
+      "type": "stat",
+      "title": "Logs ingested",
+      "targets": [{ "expr": "logpulse_logs_ingested_total" }]
+    },
+    {
+      "type": "stat",
+      "title": "Flush errors",
+      "targets": [{ "expr": "logpulse_logs_flush_errors_total" }]
+    },
+    {
+      "type": "stat",
+      "title": "Rate limits",
+      "targets": [{ "expr": "logpulse_rate_limit_hits_total" }]
+    }
+  ],
+  "schemaVersion": 39,
+  "version": 1
+}
